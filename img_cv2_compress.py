@@ -12,8 +12,10 @@ for item in items:
     ext = item.split(".")[1]
     save_compress_path = os.path.join(save_path,item)
     if ext == 'jpg' or ext == 'jpeg':
+        # [cv2.IMWRITE_JPEG_QUALITY,40]该列表内数字可选0-100,数字越小压缩率越高
         cv2.imwrite(save_compress_path,img,[cv2.IMWRITE_JPEG_QUALITY,40])
     if ext == 'png':
+        # [cv2.IMWRITE_PNG_COMPRESSION,7]该列表内数字可选0-9,数字越大压缩率越高
         cv2.imwrite(save_compress_path,img,[cv2.IMWRITE_PNG_COMPRESSION,7])
     after_compress = os.path.getsize(save_compress_path)
     compress_size = before_compress - after_compress
